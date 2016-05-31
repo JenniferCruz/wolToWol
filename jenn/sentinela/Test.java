@@ -10,7 +10,7 @@ public class Test {
     boolean finish;
 
     WordPairList wordList;
-    ArrayList<Integer> badScrs= new ArrayList<Integer>();
+    ArrayList<Integer> badScores = new ArrayList<Integer>();
 
     Scanner in = new Scanner(System.in);
 
@@ -21,16 +21,16 @@ public class Test {
 
 
     public double getScore(){
-        return (score/numWords);
+        return (numWords>0) ? (score/numWords) : 0.0;
     }
 
 
     public void take(){
         for(int i = 0; i< wordList.size(); i++){
             if(finish) break;
-            System.out.print(" " + wordList.getWordAt(i)[0] + ": ");
+            System.out.print(" " + wordList.getSourceWord(i) + ": ");
             String userTrans = in.nextLine();
-            checkTranslation(wordList.getWordAt(i), userTrans, i);
+            evaluate(userTrans, i);
         }
     }
 
@@ -40,11 +40,10 @@ public class Test {
     }
 
 
-    private void checkTranslation(String[] word, String trans, int i){
+    private void evaluate(String trans, int i){
         numWords++;
-        if(word[1].equals(trans)) score++;
-        else badScrs.add(i);
-
+        if(wordList.checkTranslation(i, trans)) score++;
+        else badScores.add(i);
     }
 
 }

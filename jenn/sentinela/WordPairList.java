@@ -1,21 +1,28 @@
 package jenn.sentinela;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class WordPairList {
 
-    ArrayList<String[]> wordList = new ArrayList<String[]>();
+    ArrayList<WordPair> wordList = new ArrayList<WordPair>();
 
-    public void addWordPair(String str1, String str2){
-        String[] word = {str1, str2};
+    public void addWordPair(WordPair word){
         wordList.add(word);
     }
 
 
-    public String[] getWordAt(int index){
+    public WordPair getWordAt(int index){
         return wordList.get(index);
+    }
+
+
+    public String getSourceWord(int index){
+        return wordList.get(index).getWord1();
+    }
+
+
+    public String getTranslationWord(int index){
+        return wordList.get(index).getWord2();
     }
 
 //
@@ -30,6 +37,11 @@ public class WordPairList {
 
     public int size(){
         return wordList.size();
+    }
+
+    public boolean checkTranslation(int i, String trans){
+        if(getTranslationWord(i).equals(trans)) return true;
+        return false;
     }
 
 }

@@ -21,6 +21,7 @@ public class Feeder {
         }
     }
 
+
     private String[][] generateArrays(){
 
         String[] waddle = {"waddle", "andar como pato"};
@@ -55,12 +56,15 @@ public class Feeder {
 
     }
 
+
     private void fillWordList() {
         String[][] arrays = generateArrays();
         for(int i=0; i<arrays.length; i++){
-            wordPairList.addWordPair(arrays[i][0], arrays[i][1]);
+            WordPair wordPair = new WordPair(arrays[i][0], arrays[i][1]);
+            wordPairList.addWordPair(wordPair);
         }
     }
+
 
     private void fillArrayList() {
 
@@ -69,9 +73,11 @@ public class Feeder {
         }
     }
 
+
     public ArrayList<String[]> getArrayListStr() {
         return arrayListStr;
     }
+
 
     public WordPairList getWordPairList(){
         return wordPairList;
