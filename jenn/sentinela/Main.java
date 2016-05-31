@@ -14,8 +14,8 @@ public class Main {
             // Create a test
             // Create different kind of tests
 
-            Feeder feed = new Feeder("Array List");
-            Test test = new Test(feed.getArrayListStr());
+            Feeder feed = new Feeder("wordlist");
+            Test test = new Test(feed.getWordPairList());
             test.take();
             System.out.println(test.getScore());
 

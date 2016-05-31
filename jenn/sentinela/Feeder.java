@@ -10,11 +10,11 @@ public class Feeder {
 
     public Feeder(String type) {
         switch (type) {
-            case "Array List":
+            case "array":
                 fillArrayList();
                 this.type = type;
                 break;
-            case "Word List":
+            case "wordlist":
                 fillWordList();
             default:
                 break;
@@ -72,6 +72,11 @@ public class Feeder {
     public ArrayList<String[]> getArrayListStr() {
         return arrayListStr;
     }
+
+    public WordPairList getWordPairList(){
+        return wordPairList;
+    }
+
 
     public String printArrayList(){
         String printVs = "([";

@@ -9,13 +9,13 @@ public class Test {
     double numWords = 0.0;
     boolean finish;
 
-    ArrayList<String[]> wordList;
+    WordPairList wordList;
     ArrayList<Integer> badScrs= new ArrayList<Integer>();
 
     Scanner in = new Scanner(System.in);
 
 
-    public Test(ArrayList<String[]> list){
+    public Test(WordPairList list){
         wordList = list;
     }
 
@@ -26,11 +26,11 @@ public class Test {
 
 
     public void take(){
-        for(int i = 0; i<wordList.size(); i++){
+        for(int i = 0; i< wordList.size(); i++){
             if(finish) break;
-            System.out.print(" " + wordList.get(i)[0] + ": ");
+            System.out.print(" " + wordList.getWordAt(i)[0] + ": ");
             String userTrans = in.nextLine();
-            checkTranslation(wordList.get(i), userTrans, i);
+            checkTranslation(wordList.getWordAt(i), userTrans, i);
         }
     }
 
