@@ -9,11 +9,11 @@ public class Test {
     double score = 0.0;
     double numWords = 0.0;
     boolean finish;
+    int currentWord = 0;
 
     WordPairList wordList;
     ArrayList<Integer> badScores = new ArrayList<Integer>();
 
-    Scanner in = new Scanner(System.in);
 
 
     public Test(WordPairList list){
@@ -26,29 +26,20 @@ public class Test {
     }
 
 
-    public void take(PrintStream ps){
-        for(int i = 0; i< wordList.size(); i++){
-            if(finish) break;
-            oneQuestion(i, ps);
-        }
+   public boolean hasNext() {
+       return currentWord < wordList.size();
+   }
+
+    public void guess(String trans){
+        if(wordList.checkTranslation(getLastWordIndex(), trans)) score++;
+        else badScores.add(getLastWordIndex());
     }
 
-    private void oneQuestion(int i, PrintStream ps) {
-        ps.print(" " + wordList.getSourceWord(i) + ": ");
-        String userTrans = in.nextLine();
-        evaluate(userTrans, i);
+    private int getLastWordIndex() {
+        return currentWord - 1;
     }
 
-
-    public void finish(){
-        finish = true;
+    public String nextQuestion() {
+        return wordList.getSourceWord(currentWord++);
     }
-
-
-    private void evaluate(String trans, int i){
-        numWords++;
-        if(wordList.checkTranslation(i, trans)) score++;
-        else badScores.add(i);
-    }
-
 }

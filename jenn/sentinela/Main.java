@@ -1,6 +1,11 @@
 package jenn.sentinela;
 
+import java.util.Scanner;
+
 public class Main {
+
+    static Scanner in = new Scanner(System.in);
+
 
     public static void main(String[] args) {
 
@@ -16,7 +21,15 @@ public class Main {
 
             Feeder feed = new Feeder("wordlist");
             Test test = new Test(feed.getWordPairList());
-            test.take(System.out);
+            //test.take(System.out);
+
+            while(test.hasNext()) {
+                System.out.println(test.nextQuestion());
+                String input = in.nextLine();
+                if( input == "!exit") break;
+                test.guess(input);
+            }
+        
             System.out.println(test.getScore());
 
     }
