@@ -23,12 +23,14 @@ public class Main {
             Test test = new Test(feed.getWordPairList());
             //test.take(System.out);
 
-            while(test.hasNext()) {
-                System.out.println(test.nextQuestion());
-                String input = in.nextLine();
-                if( input.equals("!exit")) break;
-                test.guess(input);
-            }
+           for(QuestionGuess qg : test.questions()) {
+               System.out.println(qg.text());
+               String str = in.nextLine();
+               if(str.equals("!exit")) break;
+
+               qg.check(str);
+
+           }
 
             System.out.println(test.getScore());
 

@@ -42,4 +42,8 @@ public class Test {
     public String nextQuestion() {
         return wordList.getSourceWord(currentWord++);
     }
+
+    public QuestionGuess[] questions() {
+        return new QuestionGuess[0];
+    }
 }
