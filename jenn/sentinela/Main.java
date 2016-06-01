@@ -16,7 +16,7 @@ public class Main {
 
             Feeder feed = new Feeder("wordlist");
             Test test = new Test(feed.getWordPairList());
-            test.take();
+            test.take(System.out);
             System.out.println(test.getScore());
 
     }

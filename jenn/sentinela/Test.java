@@ -1,5 +1,6 @@
 package jenn.sentinela;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -25,13 +26,17 @@ public class Test {
     }
 
 
-    public void take(){
+    public void take(PrintStream ps){
         for(int i = 0; i< wordList.size(); i++){
             if(finish) break;
-            System.out.print(" " + wordList.getSourceWord(i) + ": ");
-            String userTrans = in.nextLine();
-            evaluate(userTrans, i);
+            oneQuestion(i, ps);
         }
+    }
+
+    private void oneQuestion(int i, PrintStream ps) {
+        ps.print(" " + wordList.getSourceWord(i) + ": ");
+        String userTrans = in.nextLine();
+        evaluate(userTrans, i);
     }
 
 
