@@ -22,7 +22,7 @@ public class Test {
 
 
     public double getScore(){
-        return (numWords>0) ? (score/numWords) : 0.0;
+        return currentWord > 0 ? score/currentWord : 0.0;
     }
 
 

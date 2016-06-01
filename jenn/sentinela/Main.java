@@ -26,10 +26,10 @@ public class Main {
             while(test.hasNext()) {
                 System.out.println(test.nextQuestion());
                 String input = in.nextLine();
-                if( input == "!exit") break;
+                if( input.equals("!exit")) break;
                 test.guess(input);
             }
-        
+
             System.out.println(test.getScore());
 
     }
